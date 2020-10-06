@@ -17,9 +17,15 @@ function TodoApp() {
         {id:2,task:"eat",completed:false}
     ];
    const [todos,setTodos]=useState(initialTodos);
+
    const addTodo =addText=>{
        setTodos([...todos, {id:3,task:addText,completed:false},])
    };
+   
+   const removeTodo =selectedTodoId=>{
+     const refreshTodos =todos.filter(eachTodos=>eachTodos.id !== selectedTodoId);
+     setTodos(refreshTodos);
+   }
 
    return (
     <Paper
@@ -41,7 +47,7 @@ function TodoApp() {
         <TodoForm addTodo={addTodo} />
         <TodoList
           todos={todos}
-        //   removeTodo={removeTodo}
+          removeTodo={removeTodo}
         //   toggleTodo={toggleTodo}
         //   editTodo={editTodo}
         />
