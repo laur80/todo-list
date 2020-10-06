@@ -9,6 +9,7 @@ import Grid from "@material-ui/core/Grid";
 // import { Divider } from '@material-ui/core';
 // import { light } from '@material-ui/core/styles/createPalette';
 import TodoForm from "./TodoForm"
+import { v4 as uuidv4 } from 'uuid';
 
 
 function TodoApp() {
@@ -18,14 +19,20 @@ function TodoApp() {
     ];
    const [todos,setTodos]=useState(initialTodos);
 
-   const addTodo =addText=>{
-       setTodos([...todos, {id:3,task:addText,completed:false},])
+   const addTodo = addText => { 
+       setTodos([...todos, {id:uuidv4(),task:addText,completed:false},])
    };
-   
-   const removeTodo =selectedTodoId=>{
-     const refreshTodos =todos.filter(eachTodos=>eachTodos.id !== selectedTodoId);
+
+   const removeTodo = selectedTodoId => {
+     const refreshTodos = todos.filter(eachTodos => eachTodos.id !== selectedTodoId);
      setTodos(refreshTodos);
-   }
+   };
+
+   const toggleTodo = selectedTodoId => {
+     const updateTodos = todos.map(eachTodos =>
+       eachTodos.id === selectedTodoId ? {...eachTodos,completed:!eachTodos.completed} : eachTodos)
+       setTodos(updateTodos);
+   };
 
    return (
     <Paper
@@ -48,7 +55,7 @@ function TodoApp() {
         <TodoList
           todos={todos}
           removeTodo={removeTodo}
-        //   toggleTodo={toggleTodo}
+          toggleTodo={toggleTodo}
         //   editTodo={editTodo}
         />
       </Grid>
