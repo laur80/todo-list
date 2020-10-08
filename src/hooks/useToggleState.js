@@ -1,6 +1,4 @@
-import React, {
- useState
-} from 'react'
+import{useState} from 'react'
 
 function useToggleState(initialVal = false) {
  const [logicalData, setBoolean] = useState(initialVal);

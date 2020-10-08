@@ -14,13 +14,13 @@ function TodoList({ todos, removeTodo, toggleTodo,changeTodo }) {
         {todos.map((todo,i) => (
           <>
             <Todo
-              id={todo.id}
+             
+              {...todo}
               removeTodo={removeTodo}
               toggleTodo={toggleTodo}
               changeTodo={changeTodo}
               key={todo.id}
-              task={todo.task}
-              completed={todo.completed}
+              
             />
             {i < todos.length -1 && <Divider />}
           </>
