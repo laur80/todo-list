@@ -1,24 +1,16 @@
 import React from "react";
 import TodoList from "./TodoList";
-// import TodoForm from "./TodoForm";
+import TodoForm from "./TodoForm";
 import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Grid from "@material-ui/core/Grid";
-// import { Divider } from '@material-ui/core';
-// import { light } from '@material-ui/core/styles/createPalette';
-import TodoForm from "./TodoForm";
-// import { v4 as uuidv4 } from "uuid";
-import useTodoState from "./hooks/useTodoState"
+import { TodosProvider } from "./context/todos.context";
 
-function TodoApp(initialTodos) {
 
-  // const initialTodos = [];
+function TodoApp() {
 
-  const {todos,addTodo,removeTodo, toggleTodo,changeTodo} = useTodoState(initialTodos);
-
-  
   return (
     <Paper
       style={{
@@ -37,7 +29,7 @@ function TodoApp(initialTodos) {
         }}
       >
         <Toolbar>
-          <Typography color="inherit"> TODOS WITH HOOKS </Typography>{" "}
+          <Typography color="inherit"> TODOS WITH HOOKS </Typography>
         </Toolbar>
       </AppBar>
       <Grid
@@ -48,13 +40,10 @@ function TodoApp(initialTodos) {
         }}
       >
         <Grid item xs={11} md={8} lg={4}>
-          <TodoForm addTodo={addTodo} />
-          <TodoList
-            todos={todos}
-            removeTodo={removeTodo}
-            toggleTodo={toggleTodo}
-            changeTodo={changeTodo}
-          />
+        <TodosProvider>
+          <TodoForm />
+          <TodoList/>
+        </TodosProvider>
         </Grid>
       </Grid>
     </Paper>

@@ -54,9 +54,9 @@ const changeTodo = (selectedTodoId,newTask) => {
   removeTodo:removeTodo,
   toggleTodo:toggleTodo,
   changeTodo:changeTodo
+  
+   }
+  }
 
-
- }
-}
 
 export default useTodoState

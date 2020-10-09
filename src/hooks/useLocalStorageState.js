@@ -7,13 +7,14 @@ function useLocalStorageState(key,defaultVal) {
    val=JSON.parse(window.localStorage.getItem(key) || String(defaultVal));
   } catch (e) {
    val=defaultVal;
+   console.log("USING", val);
   }
   return val;
  });
 
 useEffect(()=>{
  window.localStorage.setItem(key,JSON.stringify(state))
-},[state])
+},[state,key])
 
  return [state,setState];
 }
