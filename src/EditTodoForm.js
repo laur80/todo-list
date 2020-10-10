@@ -6,6 +6,8 @@ import { DispatchContext } from "./context/todos.context";
 function EditTodoForm({id,task,toggle}) {
  const [value, handleChange, reset] = useInputState(task)
  const dispatch =useContext(DispatchContext);
+console.log("edit compo");
+
  return (
   <form 
   onSubmit={(e)=>{

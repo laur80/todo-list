@@ -1,42 +1,42 @@
-import useLocalStorageState from './useLocalStorageState'
-import { v4 as uuidv4 } from "uuid";
+// import useLocalStorageState from './useLocalStorageState'
+// import { v4 as uuidv4 } from "uuid";
 
-function useTodoState(initialTodos) {
+// function useTodoState(initialTodos) {
 
- const [todos, setTodos] = useLocalStorageState("todos",initialTodos);
+//  const [todos, setTodos] = useLocalStorageState("todos",initialTodos);
 
- const addTodo = (addText) => {
- setTodos([...todos,{id: uuidv4(),task: addText,completed: false}]);
-};
+//  const addTodo = (addText) => {
+//  setTodos([...todos,{id: uuidv4(),task: addText,completed: false}]);
+// };
 
-const removeTodo = (selectedTodoId) => {
- const refreshTodos = todos.filter((eachTodos) => eachTodos.id !== selectedTodoId);
- setTodos(refreshTodos);
-};
-
-
-
-const toggleTodo = (selectedTodoId) => {
- const updateTodos = todos.map((eachTodos) =>eachTodos.id === selectedTodoId ? {...eachTodos,completed: !eachTodos.completed}: eachTodos);
- setTodos(updateTodos);
-};
+// const removeTodo = (selectedTodoId) => {
+//  const refreshTodos = todos.filter((eachTodos) => eachTodos.id !== selectedTodoId);
+//  setTodos(refreshTodos);
+// };
 
 
-const changeTodo = (selectedTodoId,newTask) => {
- const updateTodos = todos.map((eachTodos) =>eachTodos.id === selectedTodoId ? {...eachTodos,task: newTask}: eachTodos);
- setTodos(updateTodos);
-};
+
+// const toggleTodo = (selectedTodoId) => {
+//  const updateTodos = todos.map((eachTodos) =>eachTodos.id === selectedTodoId ? {...eachTodos,completed: !eachTodos.completed}: eachTodos);
+//  setTodos(updateTodos);
+// };
 
 
- return {
-  todos,
-  addTodo:addTodo,
-  removeTodo:removeTodo,
-  toggleTodo:toggleTodo,
-  changeTodo:changeTodo
+// const changeTodo = (selectedTodoId,newTask) => {
+//  const updateTodos = todos.map((eachTodos) =>eachTodos.id === selectedTodoId ? {...eachTodos,task: newTask}: eachTodos);
+//  setTodos(updateTodos);
+// };
+
+
+//  return {
+//   todos,
+//   addTodo:addTodo,
+//   removeTodo:removeTodo,
+//   toggleTodo:toggleTodo,
+//   changeTodo:changeTodo
   
-   }
-  }
+//    }
+//   }
 
 
-export default useTodoState
+// export default useTodoState
