@@ -6,45 +6,25 @@ function useTodoState(initialTodos) {
  const [todos, setTodos] = useLocalStorageState("todos",initialTodos);
 
  const addTodo = (addText) => {
-  setTodos([
-    ...todos,
-    {
-      id: uuidv4(),
-      task: addText,
-      completed: false,
-    },
-  ]);
+ setTodos([...todos,{id: uuidv4(),task: addText,completed: false}]);
 };
 
 const removeTodo = (selectedTodoId) => {
-  const refreshTodos = todos.filter(
-    (eachTodos) => eachTodos.id !== selectedTodoId
-  );
-  setTodos(refreshTodos);
+ const refreshTodos = todos.filter((eachTodos) => eachTodos.id !== selectedTodoId);
+ setTodos(refreshTodos);
 };
+
+
 
 const toggleTodo = (selectedTodoId) => {
-  const updateTodos = todos.map((eachTodos) =>
-    eachTodos.id === selectedTodoId
-      ? {
-          ...eachTodos,
-          completed: !eachTodos.completed,
-        }
-      : eachTodos
-  );
-  setTodos(updateTodos);
+ const updateTodos = todos.map((eachTodos) =>eachTodos.id === selectedTodoId ? {...eachTodos,completed: !eachTodos.completed}: eachTodos);
+ setTodos(updateTodos);
 };
 
+
 const changeTodo = (selectedTodoId,newTask) => {
-  const updateTodos = todos.map((eachTodos) =>
-    eachTodos.id === selectedTodoId
-      ? {
-          ...eachTodos,
-          task: newTask,
-        }
-      : eachTodos
-  );
-  setTodos(updateTodos);
+ const updateTodos = todos.map((eachTodos) =>eachTodos.id === selectedTodoId ? {...eachTodos,task: newTask}: eachTodos);
+ setTodos(updateTodos);
 };
 
 

@@ -5,12 +5,13 @@ import { TodosContext } from "./context/todos.context";
 
 function EditTodoForm({id,task,toggle}) {
  const [value, handleChange, reset] = useInputState(task)
- const {changeTodo} =useContext(TodosContext);
+ const {dispatch} =useContext(TodosContext);
  return (
   <form 
   onSubmit={(e)=>{
    e.preventDefault();
-   changeTodo(id,value);
+   
+   dispatch({type: "CHANGEorEDIT",id:id, newTask:value});
    reset();
    toggle();
   }}
